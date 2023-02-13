@@ -1,4 +1,16 @@
-# splitNSP
+# splitNSPplus
+
+Splits Nintendo Switch nsp game files to make them installable. This version adds bug fixes and a progress log to AnalogMan151's original NSP splitter.
+
+Set output directory via `-o` flag.
+
+Example usage:
+
+```
+python3 splitNSP.py -o 'F:\tinfoil\nsp\bayonetta' 'Bayonetta 3.nsp'
+```
+
+# splitNSP (original readme by AnalogMan151)
 
 As some have become aware, it's been found out that the official Nintendo SDK contains a PowerShell script for splitting NSP files into 4GiB chunks so that they can be installed from FAT32 filesystems. Seeing as the official script cannot be shared, I re-wrote it in Python3 (which makes it useable on more than just Windows) as well as added in an additional feature. 
 
