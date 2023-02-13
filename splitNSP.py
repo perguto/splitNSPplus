@@ -76,7 +76,9 @@ def splitQuick(filepath):
     
 def splitCopy(filepath, output_dir=""):
     fileSize = os.path.getsize(filepath)
-    info = shutil.disk_usage(os.path.dirname(os.path.abspath(filepath)))
+    output_abspath = os.path.abspath(output_dir)
+    print("Writing to: "+output_abspath)
+    info = shutil.disk_usage(os.path.dirname(output_abspath))
     if info.free < fileSize*2:
         print('Not enough free space to run. Will require twice the space as the NSP file\n')
         return
@@ -112,7 +114,9 @@ def splitCopy(filepath, output_dir=""):
                     while partSize < splitSize:
                         splitFile.write(nspFile.read(chunkSize))
                         partSize += chunkSize
+                        print("Already wrote " + partSize + " bytes.")
                     remainingSize -= splitSize
+                    print(str(remainingSize)+" bytes remaining.")
                 else:
                     while partSize < remainingSize:
                         splitFile.write(nspFile.read(chunkSize))
